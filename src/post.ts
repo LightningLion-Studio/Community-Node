@@ -6,13 +6,13 @@ import type { TypeGetPost } from "./types/post"
  * 获取文章/帖子列表
  *
  * @param type 必填，自己看参数
- * @param limit 限制获取多少篇文章
+ * @param limit 限制获取多少篇文章/帖子
  * @param offset 偏移，这个自行百度用法，长篇大论就不合适了
  * @param order 排序方式，参考API文档
  * @author Zero <1203970284@qq.com>
  * @since 2022
  */
-export async function GetPost(
+export async function Get(
   type: "post" | "topic",
   limit?: number,
   offset?: number,
@@ -30,11 +30,11 @@ import type { TypeGetSinglePost } from "./types/post"
  * 获取单篇文章/帖子
  *
  * @param type 必填，自己看参数
- * @param id 文章id
+ * @param id 文章/帖子id
  * @author Zero <1203970284@qq.com>
  * @since 2022
  */
-export async function GetSinglePost(
+export async function GetSingle(
   type: "post" | "topic",
   id: number,
 ): Promise<TypeGetSinglePost> {
@@ -50,16 +50,16 @@ export async function GetSinglePost(
  *
  * @param cookie cookie 必填
  * @param type 必填，自己看参数
- * @param title 文章标题 必填
- * @param data 文章markdown数据 必传
+ * @param title 文章/帖子标题 必填
+ * @param data 文章/帖子markdown数据 必传
  * @param comment 评论 必填
  * @param category 分类目录，不传默认为1
- * @param id 如果传入了此参数，此接口作为保存文章的接口使用；如果未传入，则调用此接口会新建一篇文章
- * @param poster 文章封面
+ * @param id 如果传入了此参数，此接口作为保存文章/帖子的接口使用；如果未传入，则调用此接口会新建一篇文章/帖子
+ * @param poster 文章/帖子封面
  * @author Zero <1203970284@qq.com>
  * @since 2022
  */
-export async function PostNewDraft(
+export async function PostDraft(
   cookie: string,
   type: "post" | "topic",
   title: string,
@@ -81,10 +81,12 @@ export async function PostNewDraft(
 /**
  * 将草稿放入待审列表
  *
+ * @param cookie cookie 必填
+ * @param id 文章/帖子id
  * @author Zero <1203970284@qq.com>
  * @since 2022
  */
-export async function PutPostCheck(
+export async function PutCheck(
   cookie: string,
   id: number,
 ): Promise<TypeDatabaseUpdate> {
