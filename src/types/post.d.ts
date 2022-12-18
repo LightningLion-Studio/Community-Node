@@ -1,7 +1,5 @@
-import { basicPostList } from "./common"
-/**
- * 获取文章列表
- */
+import { basicPostList, datebaseUpdate } from "./common"
+
 export interface TypeGetPost {
   code: number
   message: string
@@ -9,4 +7,10 @@ export interface TypeGetPost {
   limit: number
   offset: number
   data: Array<basicPostList>
+}
+
+export interface TypeGetSinglePost {
+  code: number
+  message: string
+  data: basicPostList
 }
