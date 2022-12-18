@@ -18,7 +18,8 @@ export async function Login(
   return data.data
 }
 
-export async function GetUserInfo(cookie: string): Promise<TypeRequest> {
+import { TypeGetUserInfo } from "./types/user"
+export async function GetUserInfo(cookie: string): Promise<TypeGetUserInfo> {
   const data = await request({
     url: "/user",
     params: { cookie },
