@@ -3,8 +3,9 @@ import type { TypeDatabaseUpdate } from "./types/common"
 
 import type { TypeGetPost } from "./types/post"
 /**
- * 获取文章列表
+ * 获取文章/帖子列表
  *
+ * @param type 必填，自己看参数
  * @param limit 限制获取多少篇文章
  * @param offset 偏移，这个自行百度用法，长篇大论就不合适了
  * @param order 排序方式，参考API文档
@@ -12,12 +13,13 @@ import type { TypeGetPost } from "./types/post"
  * @since 2022
  */
 export async function GetPost(
+  type: "post" | "topic",
   limit?: number,
   offset?: number,
   order?: 1 | 2 | 3 | 4 | 5,
 ): Promise<TypeGetPost> {
   const data = await request({
-    url: "/post",
+    url: "/" + type,
     params: { limit, offset, order },
   })
   return data.data
@@ -25,24 +27,29 @@ export async function GetPost(
 
 import type { TypeGetSinglePost } from "./types/post"
 /**
- * 获取单篇文章
+ * 获取单篇文章/帖子
  *
+ * @param type 必填，自己看参数
  * @param id 文章id
  * @author Zero <1203970284@qq.com>
  * @since 2022
  */
-export async function GetSinglePost(id: number): Promise<TypeGetSinglePost> {
+export async function GetSinglePost(
+  type: "post" | "topic",
+  id: number,
+): Promise<TypeGetSinglePost> {
   const data = await request({
-    url: "/post/single",
+    url: `/${type}/single`,
     params: { id },
   })
   return data.data
 }
 
 /**
- * 发布草稿/保存草稿
+ * 发布草稿/保存文章/帖子草稿
  *
  * @param cookie cookie 必填
+ * @param type 必填，自己看参数
  * @param title 文章标题 必填
  * @param data 文章markdown数据 必传
  * @param comment 评论 必填
@@ -54,6 +61,7 @@ export async function GetSinglePost(id: number): Promise<TypeGetSinglePost> {
  */
 export async function PostNewDraft(
   cookie: string,
+  type: "post" | "topic",
   title: string,
   data: string,
   comment: "open" | "closed",
@@ -63,7 +71,7 @@ export async function PostNewDraft(
 ): Promise<TypeDatabaseUpdate> {
   const req = await request({
     method: "post",
-    url: "/post",
+    url: "/" + type,
     params: { cookie },
     data: { title, data, comment, poster, id, category },
   })

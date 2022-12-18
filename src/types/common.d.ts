@@ -12,6 +12,7 @@ export interface basicPostList {
   view: number
   date: string | number
   category: number
+  liked?: string | Array<number>
 }
 
 /**
