@@ -6,7 +6,9 @@
 此仓库为心电社区的SDK，开发者可通过此SDK，心电社区的API在Node项目中调用。  
 项目全用TypeScript开发。没错，所以任何数据都有类型。  
 
-![如图所示，所有项目都有类型](https://github.com/LightningLion-Studio/Community-Node/blob/master/assets/tips.png?raw=true)
+![如图所示，所有项目都有类型](https://github.com/LightningLion-Studio/Community-Node/blob/master/assets/tips.png?raw=true) 
+
+如上所示，所有项目都有类型，开发起来就舒服了吧。
 
 ## 安装
 
