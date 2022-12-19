@@ -1,3 +1,5 @@
+import { TypeDatabaseUpdate } from "./common"
+
 export interface TypeLogin {
   code: number
   message: string
@@ -8,9 +10,24 @@ export interface TypeLogin {
   }
 }
 
+export interface TypeGetOtherUserInfo {
+  code: number
+  message: string
+  data: {
+    id: number
+    name: string
+    avatar?: string
+    saying?: string
+    email?: string
+    level: number
+    ban: boolean
+    ban_time?: number
+  }
+}
+
 export interface TypeGetUserInfo {
-  code: 200
-  message: ""
+  code: number
+  message: string
   data: {
     id: number
     name: string
@@ -28,4 +45,10 @@ export interface TypeGetUserInfo {
     checks: number
     publish: number
   }
+}
+
+export interface TypePostUserMailCode {
+  code: number
+  message: string
+  data: TypeDatabaseUpdate
 }
