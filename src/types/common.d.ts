@@ -37,3 +37,11 @@ export interface TypeDatabaseUpdate {
   message: string
   data: datebaseUpdate
 }
+
+/**
+ * 普通返回值
+ */
+export interface TypeNormal {
+  code: number
+  message?: string
+}
