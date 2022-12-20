@@ -18,10 +18,37 @@ $ npm install lightning-community
 
 ## 使用
 
+### ES Module
+
+如果您开发前端，请尽量不使用ESModule的默认导出，因为本项目经过Babel编译可以Tree Shaking。
+
 ```ts
-import { GetPost } from "lightning-community"
+import { Get } from "lightning-community"
 async function receivePost() {
-    const data = await GetPost()
+    const data = await Get("post")
+    // `data`变量就是数据喽，在这个asnyc/await函数里使用吧
+}
+receivePost()
+```
+
+### CommonJS
+
+node.JS一般情况下不支持Tree Shaking。但是我仍然推荐您使用解构方式引入API。
+
+```js
+const { Get } = require("lightning-community")
+async function receivePost() {
+    const data = await Get("post")
+    // `data`变量就是数据喽，在这个asnyc/await函数里使用吧
+}
+receivePost()
+```
+
+### 全量引入（不推荐）
+```ts
+import Client from "ligntning-community"
+async function receivePost() {
+    const data = await Client.Get("post")
     // `data`变量就是数据喽，在这个asnyc/await函数里使用吧
 }
 receivePost()
