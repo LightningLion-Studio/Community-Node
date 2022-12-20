@@ -7,3 +7,10 @@ export interface TypeGetFollow {
     befollow: number
   }>
 }
+
+export interface TypeGetUserFollowStatic {
+  code: 500 | 200
+  message: string
+  follow: number
+  fans: number
+}

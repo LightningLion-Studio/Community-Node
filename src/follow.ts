@@ -1,5 +1,5 @@
 import { TypeNormal } from "./types/common"
-import { TypeGetFollow } from "./types/follow"
+import { TypeGetFollow, TypeGetUserFollowStatic } from "./types/follow"
 import request from "./utils/request"
 
 /**
@@ -82,6 +82,21 @@ export async function DeleteUserFolloe(
   const data = await request({
     url: "/follow",
     params: { cookie, id },
+    method: "delete",
+  })
+  return data.data
+}
+
+/**
+ * 获取用户关注与粉丝数据
+ *
+ * @param id 用户id
+ */
+export async function GetUserFollowStatic(
+  id: number,
+): Promise<TypeGetUserFollowStatic> {
+  const data = await request({
+    url: `/follow/${id}`,
   })
   return data.data
 }
