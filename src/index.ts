@@ -5,6 +5,6 @@ import * as Post from "./post"
 import * as User from "./user"
 
 export default {
-  Post,
-  User,
+  ...Post,
+  ...User,
 }
