@@ -13,7 +13,7 @@ import type { TypeGetPost } from "./types/post"
  * @since 2022
  */
 export async function Get(
-  type: "post" | "topic",
+  type: "post" | "topic" | "tag",
   limit?: number,
   offset?: number,
   order?: 1 | 2 | 3 | 4 | 5,
