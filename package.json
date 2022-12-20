@@ -1,6 +1,6 @@
 {
   "name": "lightning-community",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "心电社区 API SDK",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -10,15 +10,28 @@
     "build:deps": "father prebundle",
     "prepublishOnly": "father doctor && npm run build"
   },
-  "keywords": [],
-  "authors": [
-    "Zero <1203970284@qq.com>"
-  ],
+  "keywords": ["lightning","lightninglion"],
+  "author": {
+    "name": "Zero",
+    "email": "1203970284@qq.com",
+    "url": "https://github.com/groupguanfang"
+  },
+  "engines": {
+    "node": ">=12"
+  },
   "license": "MIT",
   "files": [
     "dist",
     "compiled"
   ],
+  "bugs": {
+    "url": "https://github.com/LightningLion-Studio/Community-Node.git",
+    "email": "1203970284@qq.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lightninglion-Studio/Community-Node.git"
+  },
   "publishConfig": {
     "access": "public"
   },
