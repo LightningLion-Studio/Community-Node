@@ -42,6 +42,6 @@ export interface TypeDatabaseUpdate {
  * 普通返回值
  */
 export interface TypeNormal {
-  code: number
+  code: 200 | 500 | 501 | 403 | number
   message?: string
 }
