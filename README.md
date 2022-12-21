@@ -33,7 +33,7 @@ receivePost()
 
 ### CommonJS
 
-node.JS一般情况下不支持Tree Shaking。但是我仍然推荐您使用解构方式引入API。
+node.JS一般情况下不支持Tree Shaking。但是我仍然推荐您只引入需要的API。
 
 ```js
 const { Get } = require("lightning-community")
@@ -44,7 +44,7 @@ async function receivePost() {
 receivePost()
 ```
 
-### 全量引入（不推荐）
+### ES全量引入（不推荐）
 ```ts
 import Client from "ligntning-community"
 async function receivePost() {
