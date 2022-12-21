@@ -1,3 +1,4 @@
+import { TypePostTag } from "./types/tag"
 import request from "./utils/request"
 
 /**
@@ -15,7 +16,7 @@ export async function PostTag(
   id: number = 0,
   desc?: string,
   poster?: string,
-) {
+): Promise<TypePostTag> {
   const data = await request({
     url: "/tag",
     params: { cookie },
