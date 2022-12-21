@@ -12,14 +12,14 @@ import request from "./utils/request"
 export async function PostTag(
   cookie: string,
   name: string,
-  id?: number = 0,
+  id: number = 0,
   desc?: string,
   poster?: string,
 ) {
   const data = await request({
     url: "/tag",
     params: { cookie },
-    data: { name, desc, poster },
+    data: { name, id, desc, poster },
   })
   return data.data
 }
