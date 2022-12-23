@@ -6,11 +6,11 @@ export interface TypeGetPost {
   cache: boolean
   limit: number
   offset: number
-  data?: Array<basicPostList>
+  data: Array<basicPostList>
 }
 
 export interface TypeGetSinglePost {
   code: number
   message: string
-  data?: basicPostList
+  data: basicPostList
 }
