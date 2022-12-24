@@ -97,3 +97,25 @@ export async function PutCheck(
   })
   return data.data
 }
+
+/**
+ * 点赞/取消点赞
+ *
+ * @param cookie token 必填
+ * @param type 自己看参数
+ * @param id 文章/帖子id
+ * @param action 选择点赞还是取消点赞（⚠️注意：dislike的取消点赞，后端没有点踩的接口！）
+ */
+export async function Like(
+  cookie: string,
+  type: "post" | "topic",
+  id: number,
+  action: "like" | "dislike",
+): Promise<TypeDatabaseUpdate> {
+  const data = await request({
+    url: `/${type}/like`,
+    params: { cookie },
+    data: { id, type: action },
+  })
+  return data.data
+}
