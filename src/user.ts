@@ -98,6 +98,7 @@ export async function Register(config: {
  * @param offset 偏移
  */
 import { TypeGetOtherUserInfo } from "./types/user"
+import { TypeGetPost } from "./types/post"
 export async function GetUserList(
   cookie: string,
   limit: number,
@@ -165,6 +166,26 @@ export async function GetUserInfoByGuest(id: number) {
   const data = await request({
     url: "/user/info",
     params: { id },
+  })
+  return data.data
+}
+
+/**
+ * 获取用户文章
+ *
+ * @param id 用户id必填
+ * @param cookie token 可选，如果传入则会一起获取用户的待审/草稿/已发布文章
+ * @author Zero <1203970284@qq.com>
+ * @since 2022
+ */
+export async function GetUserPost(
+  id: number,
+  cookie?: string,
+): Promise<TypeGetPost> {
+  const data = await request({
+    method: "get",
+    url: `/post/user/${id}`,
+    params: { cookie },
   })
   return data.data
 }
