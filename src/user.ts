@@ -181,11 +181,13 @@ export async function GetUserInfoByGuest(id: number) {
 export async function GetUserPost(
   id: number,
   cookie?: string,
+  callback?: Function,
 ): Promise<TypeGetPost> {
   const data = await request({
     method: "get",
     url: `/post/user/${id}`,
     params: { cookie },
   })
+  if (callback) callback()
   return data.data
 }
