@@ -1,6 +1,6 @@
 {
   "name": "lightning-community",
-  "version": "0.2.11",
+  "version": "0.2.12",
   "description": "心电社区 API SDK",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
