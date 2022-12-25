@@ -119,3 +119,16 @@ export async function Like(
   })
   return data.data
 }
+
+/**
+ *
+ * @param type 自己看参数
+ * @param id 文字/帖子id
+ */
+export async function DeletePost(type: "post" | "topic", id: number) {
+  const data = await request({
+    url: `/${type}`,
+    params: { id },
+  })
+  return data.data
+}
