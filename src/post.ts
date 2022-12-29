@@ -1,5 +1,5 @@
 import request from "./utils/request"
-import type { TypeDatabaseUpdate } from "./types/common"
+import type { TypeNormal, TypeDatabaseUpdate } from "./types/common"
 
 import type { TypeGetPost } from "./types/post"
 /**
@@ -99,6 +99,24 @@ export async function PutCheck(
 }
 
 /**
+ * 获取该篇文章点赞的人
+ * 
+ * @param id 文章/帖子id
+ * @author Zero
+ * @since 2022
+ */
+export async function GetLike(
+  type: "post" | "topic",
+  id:number
+):Promise<TypeNormal> {
+  const data = await request({
+    url: `/${type}/like`,
+    params: { id }
+  })
+  return data.data
+}
+
+/**
  * 点赞/取消点赞
  *
  * @param cookie token 必填
@@ -116,6 +134,7 @@ export async function Like(
     url: `/${type}/like`,
     params: { cookie },
     data: { id, type: action },
+    method: "post"
   })
   return data.data
 }
