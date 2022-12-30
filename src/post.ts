@@ -132,8 +132,7 @@ export async function Like(
 ): Promise<TypeDatabaseUpdate> {
   const data = await request({
     url: `/${type}/like`,
-    params: { cookie },
-    data: { id, type: action },
+    params: { cookie, id, type: action },
     method: "post"
   })
   return data.data
