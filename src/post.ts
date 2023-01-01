@@ -147,6 +147,7 @@ export async function DeletePost(type: "post" | "topic", id: number) {
   const data = await request({
     url: `/${type}`,
     params: { id },
+    method: 'delete'
   })
   return data.data
 }
