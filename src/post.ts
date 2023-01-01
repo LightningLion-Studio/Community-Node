@@ -143,10 +143,10 @@ export async function Like(
  * @param type 自己看参数
  * @param id 文字/帖子id
  */
-export async function DeletePost(type: "post" | "topic", id: number) {
+export async function DeletePost(cookie: string, type: "post" | "topic", id: number) {
   const data = await request({
     url: `/${type}`,
-    params: { id },
+    params: { cookie, id },
     method: 'delete'
   })
   return data.data
