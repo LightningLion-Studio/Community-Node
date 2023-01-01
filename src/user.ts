@@ -199,14 +199,14 @@ export async function GetUserPost(
  * @author Zero
  * @since 2022
  */
-export async function GetUserMedia(path:string):Promise<{
+export async function GetUserMedia(cookie: string, path?:string):Promise<{
   code: number,
   message: string,
   data: any
 }> {
   const data = await request({
     url: '/user/upload',
-    params: { path }
+    params: { cookie, path }
   })
   return data.data
 }
