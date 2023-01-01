@@ -191,3 +191,24 @@ export async function GetUserPost(
   if (callback) callback()
   return data.data
 }
+
+/**
+ * 获取用户媒体
+ * 
+ * @param path 路径
+ * @author Zero
+ * @since 2022
+ */
+export async function GetUserMedia(path:string):Promise<{
+  code: number,
+  message: string,
+  data: any
+}> {
+  const data = await request({
+    url: '/user/upload',
+    params: { path }
+  })
+  return data.data
+}
+
+
