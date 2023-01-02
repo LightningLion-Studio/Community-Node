@@ -17,10 +17,11 @@ export async function Get(
   limit?: number,
   offset?: number,
   order?: 1 | 2 | 3 | 4 | 5,
+  cookie?: string,
 ): Promise<TypeGetPost> {
   const data = await request({
     url: "/" + type,
-    params: { limit, offset, order },
+    params: { limit, offset, order, cookie },
   })
   return data.data
 }
@@ -100,18 +101,18 @@ export async function PutCheck(
 
 /**
  * 获取该篇文章点赞的人
- * 
+ *
  * @param id 文章/帖子id
  * @author Zero
  * @since 2022
  */
 export async function GetLike(
   type: "post" | "topic",
-  id:number
-):Promise<TypeNormal> {
+  id: number,
+): Promise<TypeNormal> {
   const data = await request({
     url: `/${type}/like`,
-    params: { id }
+    params: { id },
   })
   return data.data
 }
@@ -133,7 +134,7 @@ export async function Like(
   const data = await request({
     url: `/${type}/like`,
     params: { cookie, id, type: action },
-    method: "post"
+    method: "post",
   })
   return data.data
 }
@@ -143,11 +144,15 @@ export async function Like(
  * @param type 自己看参数
  * @param id 文字/帖子id
  */
-export async function DeletePost(cookie: string, type: "post" | "topic", id: number) {
+export async function DeletePost(
+  cookie: string,
+  type: "post" | "topic",
+  id: number,
+) {
   const data = await request({
     url: `/${type}`,
     params: { cookie, id },
-    method: 'delete'
+    method: "delete",
   })
   return data.data
 }
