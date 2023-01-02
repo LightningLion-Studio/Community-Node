@@ -193,22 +193,43 @@ export async function GetUserPost(
 }
 
 /**
- * 获取用户媒体
- * 
- * @param path 路径
- * @author Zero
+ * 获取用户帖子
+ *
+ * @param id 用户id必填
+ * @param cookie token 可选，如果传入则会一起获取用户的待审/草稿/已发布文章
+ * @author Zero <1203970284@qq.com>
  * @since 2022
  */
-export async function GetUserMedia(cookie: string, path?:string):Promise<{
-  code: number,
-  message: string,
-  data: any
-}> {
+export async function GetUserTopic(
+  id: number,
+  cookie?: string,
+  callback?: Function,
+): Promise<TypeGetPost> {
   const data = await request({
-    url: '/user/upload',
-    params: { cookie, path }
+    url: `/topic/user/${id}`,
+    params: { cookie },
   })
   return data.data
 }
 
-
+/**
+ * 获取用户媒体
+ *
+ * @param path 路径
+ * @author Zero
+ * @since 2022
+ */
+export async function GetUserMedia(
+  cookie: string,
+  path?: string,
+): Promise<{
+  code: number
+  message: string
+  data: any
+}> {
+  const data = await request({
+    url: "/user/upload",
+    params: { cookie, path },
+  })
+  return data.data
+}
